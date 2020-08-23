@@ -14,19 +14,36 @@
     
     
     <item>
-      <title>Docs: Envoy 简介</title>
-      <link>/docs/overview/</link>
+      <title>Docs: Envoy资源集合</title>
+      <link>/docs/resources/</link>
       <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
       
-      <guid>/docs/overview/</guid>
+      <guid>/docs/resources/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: 社区</title>
+      <link>/docs/community/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/community/</guid>
       <description>
         
         
         
 
-&lt;h2 id=&#34;核心能力&#34;&gt;核心能力&lt;/h2&gt;
+&lt;p&gt;Envoy中文社区最初是由一批互联网公司中的Envoy一线工程师利用业余时间打造的一个社区，这个社区的目的就是为了在中国传播和分享Envoy的知识。&lt;/p&gt;
 
-&lt;h2 id=&#34;社区&#34;&gt;社区&lt;/h2&gt;
+&lt;h2 id=&#34;社区会议&#34;&gt;社区会议&lt;/h2&gt;
+
+&lt;h2 id=&#34;roadmap&#34;&gt;Roadmap&lt;/h2&gt;
+
+&lt;h2 id=&#34;加入社区&#34;&gt;加入社区&lt;/h2&gt;
 
       </description>
     </item>
