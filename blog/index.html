@@ -170,6 +170,12 @@
       <a class="td-sidebar-link td-sidebar-link__page " id="m-blog-2020-08-23-envoy-e6-ba-90-e7-a0-81-e5-88-86-e6-9e-90-e4-b9-8bdispatcher-e6-9c-ba-e5-88-b6" href="/blog/2020/08/23/envoy%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8Bdispatcher%E6%9C%BA%E5%88%B6/">Envoy源码分析之Dispatcher机制</a>
       
       
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-blog-2020-08-23-envoy-e6-ba-90-e7-a0-81-e5-88-86-e6-9e-90-e4-b9-8bthreadlocal-e6-9c-ba-e5-88-b6" href="/blog/2020/08/23/envoy%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8Bthreadlocal%E6%9C%BA%E5%88%B6/">Envoy源码分析之ThreadLocal机制</a>
+      
+      
     </li>
   </ul>
 </ul>
@@ -232,6 +238,22 @@
 		
 		<h2>Posts in 2020</h2>
 		<ul class="list-unstyled mt-4">
+			
+			<li class="media mb-4">
+				<div class="media-body">
+					<h5 class="mt-0 mb-1"><a href="/blog/2020/08/23/envoy%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8Bthreadlocal%E6%9C%BA%E5%88%B6/">Envoy源码分析之ThreadLocal机制</a></h5>
+					<p class="mb-2 mb-md-3"><small class="text-muted">2020年8月23日 in 源码分析</small></p>
+					
+
+
+
+
+
+					<p class="pt-0 mt-0"> ThreadLocal机制 ​ Envoy中的ThreadLocal机制其实就是我们经常说的线程本地存储简称TLS(Thread Local Storage)，顾名思义通过TLS定义的变量会在每一个线程专有的存储区域存储一份，访问TLS的时候，其实访问的是当前线程占有存储区域中的副本，因此可以使得线程可以无锁的并发访问同一个变量。Linux上一般有三种方式来定义一个TLS变量。
+ gcc对C语言的扩展__thread pthread库提供的pthread_key_create C++11 …</p>
+					<p class="pt-0"><a href="/blog/2020/08/23/envoy%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8Bthreadlocal%E6%9C%BA%E5%88%B6/">更多</a></p>
+				</div>
+			</li>
 			
 			<li class="media mb-4">
 				<div class="media-body">
