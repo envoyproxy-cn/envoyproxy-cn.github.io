@@ -1,69 +1,17 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title> – Documentation</title>
-    <link>/docs/</link>
-    <description>Recent content in Documentation on </description>
-    <generator>Hugo -- gohugo.io</generator>
-    
-	  <atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-      
-        
-      
-    
-    
-    <item>
-      <title>Docs: Envoy资源集合</title>
-      <link>/docs/resources/</link>
-      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/resources/</guid>
-      <description>
-        
-        
-        
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: 社区</title>
-      <link>/docs/community/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/community/</guid>
-      <description>
-        
-        
-        
-
-&lt;p&gt;Envoy中文社区最初是由一批互联网公司中的Envoy一线工程师利用业余时间打造的一个社区，这个社区的目的就是为了在中国传播和分享Envoy的知识。&lt;/p&gt;
-
-&lt;h2 id=&#34;社区会议&#34;&gt;社区会议&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2020年08月29日&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;会议主题: 讨论接下来的社区发展&lt;/p&gt;
-
-&lt;p&gt;接下来社区发展的一些方向:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;丰富博客文章&lt;/li&gt;
-&lt;li&gt;翻译国外的博客&lt;/li&gt;
-&lt;li&gt;定期的Topic分享&lt;/li&gt;
-&lt;li&gt;社区公众号运营&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;roadmap&#34;&gt;Roadmap&lt;/h2&gt;
-
-&lt;h2 id=&#34;公众号&#34;&gt;公众号&lt;/h2&gt;
-
-&lt;p&gt;&lt;img width=&#34;200px&#34;  src=&#34;/images/community/gongzhanghao.png&#34;&gt;&lt;/p&gt;
-
-      </description>
-    </item>
-    
-  </channel>
-</rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>– Documentation</title><link>/docs/</link><description>Recent content in Documentation on</description><generator>Hugo -- gohugo.io</generator><atom:link href="/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Docs: Envoy资源集合</title><link>/docs/resources/</link><pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate><guid>/docs/resources/</guid><description/></item><item><title>Docs: 社区</title><link>/docs/community/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/docs/community/</guid><description>
+&lt;p>Envoy中文社区最初是由一批互联网公司中的Envoy一线工程师利用业余时间打造的一个社区，这个社区的目的就是为了在中国传播和分享Envoy的知识。&lt;/p>
+&lt;h2 id="社区会议">社区会议&lt;/h2>
+&lt;ul>
+&lt;li>2020年08月29日&lt;/li>
+&lt;/ul>
+&lt;p>会议主题: 讨论接下来的社区发展&lt;/p>
+&lt;p>接下来社区发展的一些方向:&lt;/p>
+&lt;ol>
+&lt;li>丰富博客文章&lt;/li>
+&lt;li>翻译国外的博客&lt;/li>
+&lt;li>定期的Topic分享&lt;/li>
+&lt;li>社区公众号运营&lt;/li>
+&lt;/ol>
+&lt;h2 id="roadmap">Roadmap&lt;/h2>
+&lt;h2 id="公众号">公众号&lt;/h2>
+&lt;img width="200px" src="/images/community/gongzhanghao.png"></description></item></channel></rss>
