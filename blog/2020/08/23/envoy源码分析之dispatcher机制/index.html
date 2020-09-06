@@ -25,14 +25,14 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/blog/2020/08/23/envoy%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8Bdispatcher%E6%9C%BA%E5%88%B6/" />
 <meta property="article:published_time" content="2020-08-23T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2020-09-02T22:44:35&#43;08:00"/>
+<meta property="article:modified_time" content="2020-09-07T00:59:28&#43;08:00"/>
 
 <meta itemprop="name" content="Envoy源码分析之Dispatcher机制">
 <meta itemprop="description" content="Envoy和Nginx一样都是基于事件驱动的架构，这种架构的核心就是事件循环(EventLoop)。业界目前典型的几种事件循环实现主要有Libevent、Libev、Libuv、Boost.Asio等，也可以完全基于Linux系统调用epoll来实现。Envoy选择在Libevent的基础上进行了封装，实现了自己的事件循环机制，在Envoy中被称为`Dispatcher`，一个`Dispatcher`对象就是一个事件分发器，就如同它的名字一样。`Dispatcher`是Envoy的核心，可以说Envoy中绝大部分的能力都是构建在`Dispatcher`的基础上。所以理解`Dispatcher`机制是掌握Envoy的一个很重要的前提。">
 
 
 <meta itemprop="datePublished" content="2020-08-23T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2020-09-02T22:44:35&#43;08:00" />
+<meta itemprop="dateModified" content="2020-09-07T00:59:28&#43;08:00" />
 <meta itemprop="wordCount" content="576">
 
 
@@ -536,6 +536,8 @@
 <span style="color:#000;font-weight:bold">}</span>
 </code></pre></div>
 <p>​   传递给<code>Dispatcher</code>的<code>callback</code>都是通过裸指针的方式进行回调，如果进行回调的时候对象已经析构了，就会出现野指针的问题，我相信学过C++的同学都会看出这个问题，除非能在逻辑上保证<code>Dispatcher</code>的生命周期比所有对象都短，这样就能保证在回调的时候对象肯定不会析构，但是这不可能成立的，因为<code>Dispatcher</code>是<code>EventLoop</code>的核心。一个线程运行一个<code>EventLoop</code>直到线程结束，<code>Dispatcher</code>对象才会析构，这意味着<code>Dispatcher</code>对象的生命周期是最长的。所以从逻辑上没办法保证进行回调的时候对象没有析构。可能有人会有疑问，对象在析构的时候把注册的事件(<code>file_event_</code>)取消不就可以避免野指针的问题吗? 那如果事件已经触发了，<code>callback</code>正在等待运行？ 又或者<code>callback</code>运行了一半呢？前者libevent是可以保证的，在调用<code>event_del</code>删除事件的时候可以把处于等待运行的事件callback取消掉，但是后者就无能为力了，这个时候如果对象析构了，那行为就是未定义了。沿着这个思路想一想，是不是只要保证对象析构的时候没有<code>callback</code>正在运行就可以解决问题了呢？是的，只要保证所有在执行中的<code>callback</code>执行完了，再做对象析构就可以了。可以利用<code>Dispatcher</code>是顺序执行所有<code>callback</code>的特点，向<code>Dispatcher</code>中插入一个任务就是用来对象析构的，那么当这个任务执行的时候是可以保证没有其他任何<code>callback</code>在运行。通过这个方法就完美解决了这里遇到的野指针问题了。或许有人又会想，这里是不是可以用<a href="https://en.cppreference.com/w/cpp/memory/shared_ptr" target="_blank">shared_ptr</a>和<a href="https://en.cppreference.com/w/cpp/memory/enable_shared_from_this/shared_from_this" target="_blank">shared_from_this</a>来解这个呢? 是的，这是解决多线程环境下对象析构的秘密武器，通过延长对象的生命周期，把对象的生命周期延长到和<code>callback</code>一样，等<code>callback</code>执行完再进行析构，同样可以达到效果，但是这带来了两个问题，第一就是对象生命周期被无限拉长，虽然延迟析构也拉长了生命周期，但是时间是可预期的，一旦<code>EventLoop</code>执行了<code>clearDeferredDeleteList</code>任务就会立刻被回收，而通过<code>shared_ptr</code>的方式其生命周期取决于<code>callback</code>何时运行，而<code>callback</code>何时运行这个是没办法保证的，比如一个等待<code>socket</code>的可读事件进行回调，如果对端一直不发送数据，那么<code>callback</code>就一直不会被运行，对象就一直无法被析构，长时间累积会导致内存使用率上涨。第二就是在使用方式上侵入性较强，需要强制使用<code>shared_ptr</code>的方式创建对象。</p>
+
+	
 
 	
 
